@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Form with GET</h1>
+<form action="/primo">
+    <label for="primo">Name:</label><br>
+    <input type="number" id="primo" name="primo" value="1"><br><br>
+    <input type="button" value="Submit" onclick="loadGetMsg()">
+</form>
+<div id="getrespmsg"></div>
+<h1>Form with GET</h1>
+<form action="/factor">
+    <label for="factor">Name:</label><br>
+    <input type="number" id="factor" name="factor" value="1"><br><br>
+    <input type="button" value="Submit" onclick="loadGetMsg()">
+</form>
+<div id="getrespmsdg"></div>
+<script>
+    function loadGetMsg() {
+    let nameVar = document.getElementById("name").value;
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+    document.getElementById("getrespmsg").innerHTML =
+    this.responseText;
+    }
+    xhttp.open("GET", "/hello?name="+nameVar);
+    xhttp.send();
+    }
+</script>
+</body>
+</html>
